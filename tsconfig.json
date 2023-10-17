@@ -30,5 +30,6 @@
     },
   },
   "include": ["electron/**/*.ts", "electron/**/*.d.ts", "electron/**/*.vue", "vite-env.d.ts"],
+  "files": ["./electron/main/window/index.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -12,8 +12,13 @@ export class WindowItem implements IWindowItem{
 
   /** 创建 */
   createWindow(options?: Electron.BrowserWindowConstructorOptions | undefined) {
-    this.window = new BrowserWindow(options)
+    this.window = new BrowserWindow({...options,
+      frame:false,
+      autoHideMenuBar: true
+    })
+
     WindowItem.windowMap.set(this.window, this.window)
+
     return this
   }
   

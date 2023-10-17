@@ -14,7 +14,11 @@ const _WindowItem = class _WindowItem {
   }
   /** 创建 */
   createWindow(options) {
-    this.window = new electron.BrowserWindow(options);
+    this.window = new electron.BrowserWindow({
+      ...options,
+      frame: false,
+      autoHideMenuBar: true
+    });
     _WindowItem.windowMap.set(this.window, this.window);
     return this;
   }
@@ -40,7 +44,7 @@ electron.app.whenReady().then(() => {
   const mainWindow = getWindowItem.createWindow().getWindow();
   if (process.env["NODE_ENV"] === "development") {
     console.log(mainWindow);
-    mainWindow.loadURL("http://127.0.0.1:5173");
+    mainWindow.loadURL("http://localhost:5173");
   } else {
     mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"));
   }
